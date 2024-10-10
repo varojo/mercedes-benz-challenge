@@ -74,7 +74,7 @@ horizontalpodautoscaler.autoscaling/mercedes-benz-swapi-consumer   Deployment/me
 And if you are monitoring using the **Kubernetes Dashboard** you 
 may see something like what you can see on this image: `kubernetes/KD - Mercedes Benz Stress Test.png`.
 
-You can also take a look at the **Prometheus Dashboard** to see the traffic rising. Nice and clear.
+You can also take a look at the **Prometheus Dashboard** to see the traffic rising. Nice and clear. **This was a separate test**.
 
 Alas, my cluster has not many resources and it is lacking memory, so several PODs cannot start because the cluster
 lacks memory. Like you can see in the last line of this POD's description: `Warning  FailedScheduling  2m21s  default-scheduler  0/1 nodes are available: 1 Insufficient memory. preemption: 0/1 nodes are available: 1 No preemption victims found for incoming pod..`
