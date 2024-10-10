@@ -7,6 +7,10 @@ Valentín Rojo Bianchi - DevOps Engineer (vrojobianchi@gmail.com)
 
 Here I will clarify some details about the provided solution.
 
+### Notice
+
+It is important to note that all the domain names that are referred in this project are domain names from my LAN.
+
 ## Section "Technical Requirements"
 - "Implement the microservice in one of the following languages: Golang, Java, or Python."
   - Done in Java.
