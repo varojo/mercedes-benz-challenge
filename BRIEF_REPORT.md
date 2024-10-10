@@ -19,7 +19,7 @@ Here I will clarify some details about the provided solution.
 - "Create an endpoint in your microservice that returns the sorted data."
   - Done, it is the http://traefik.valen.net/swapi-consumer/list endpoint. It could use other name, like ".../swapi-consumer/listPeople" for sure, a better mapping, but you can change that easily, and since there is only one endpoint for the whole project I did not see why it could not stay this way, merely as "list".
 - "Include error handling and logging."
-  - Done
+  - Done.
 
 ## Section "Containerization and Orchestration"
 - "Containerize the microservice using Docker."
