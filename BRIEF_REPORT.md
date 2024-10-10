@@ -3,6 +3,8 @@
 ## Author
 Valentín Rojo Bianchi - DevOps Engineer (vrojobianchi@gmail.com)
 
+## Introduction
+
 Here I will clarify some details about the provided solution.
 
 ## Section "Technical Requirements"
