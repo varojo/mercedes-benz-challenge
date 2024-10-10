@@ -1,0 +1,124 @@
+# IMPORTANT!
+# This file is for development purposes only,
+# for deployment we must use either a Kubernetes ConfigMap or environment variables
+# in order to set the properties in this file
+
+debug: false
+spring:
+  messages:
+  application:
+    name: @name@
+  config:
+    activate:
+      on-profile: dev # DO NOT CHANGE THIS
+  jackson:
+    serialization:
+      wrap-root-value: false
+springdoc:
+  # SWAGGER UI (mind the port): http://localhost:8181/swapi-consumer/doc/swagger-ui/index.html
+  # API DOCS (mind the port): http://localhost:8181/swapi-consumer/doc/api-docs
+  api-docs:
+    enabled: true # Set to false in PROD ConfigMap
+    path: ${app.swaggerprefix}/api-docs
+  swagger-ui:
+    enabled: true # Set to false in PROD ConfigMap
+    path: ${app.swaggerprefix}/swagger-ui-custom.html
+    operationsSorter: method
+    swagger-server-url: http://localhost:${server.port}/
+
+management:
+  metrics:
+    enable:
+      jvm: true
+      logback: true
+  endpoints:
+    enabled-by-default: true
+    web:
+      exposure:
+        include: "*"
+        # Enable the health and env endpoints
+        #include: env,health
+  endpoint:
+    info:
+      enabled: true
+  health:
+    show:
+      details: always
+    defaults:
+      enabled: true
+    diskspace:
+      enabled: true
+    livenessstate:
+      enabled: true
+    readinessstate:
+      enabled: true
+    probes: # Required for development
+      enabled: true # Required for development
+pom:
+  artifactId: @artifactId@ # This reads the POM's artifactId. Easy access from app and app's banner.
+  version: @version@ # This reads the POM's version. Easy access from app and app's banner.
+  name: @name@ # This reads the POM's name. Easy access from app and app's banner.
+logging:
+  file:
+    # output to a temp_folder/file
+    name: ${java.io.tmpdir}/@artifactId@_@version@.log
+  pattern:
+    dateformat: yyyy-MM-dd HH:mm:ss.SSS,Europe/Madrid
+    #pattern:
+    # pattern for the console
+    #console: '%d{yyyy-MM-dd HH:mm:ss} - %msg%n'
+    #console: "%d{yyyy-MM-dd HH:mm:ss} %-5level %logger : %msg%n"
+    # pattern for file
+    #file: '%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%'
+    #file: "%d{yyyy-MM-dd HH:mm:ss} %highlight{%p %C{1.} [%t] %m%n}"
+  level:
+    #root: DEBUG
+    #'[javax.management.remote.misc]': WARN
+    #'[javax.management.remote.rmi]': WARN
+    #'[javax.management.remote.timeout]': WARN
+    #'[org.apache.catalina.session.ManagerBase]': WARN
+    #'[org.apache.tomcat.util.net.NioEndpoint]': WARN
+    #'[sun.rmi.dgc]': WARN
+    #'[sun.rmi.loader]': WARN
+    #'[sun.rmi.server.call]': WARN
+    #'[sun.rmi.transport.misc]': WARN
+    #'[sun.rmi.transport.tcp]': WARN
+    #'[org.apache]': TRACE
+    #'[org.springframework]': INFO
+    root: INFO
+    org.springframework.web: INFO
+    #'[org.springframework.web.method.HandlerMethod]': INFO
+    org.springframework.web.servlet.DispatcherServlet: INFO
+    org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor: INFO
+    org.springframework.security: WARN
+    #org.hibernate.type: TRACE # IMPORTANT NOTICE! This one works for printing out SQL queries sent to DB, using the app logging framework
+    #org.hibernate.SQL: DEBUG # IMPORTANT NOTICE! This one works for printing out SQL queries sent to DB, using the app logging framework
+#    org.springframework.jdbc.core.JdbcTemplate: INFO
+#    org.springframework.jdbc.core.StatementCreatorUtils: TRACE
+#    org.hibernate.SQL: INFO
+#    org.hibernate.type.descriptor.sql: INFO   #For prepared statements
+    #es.northgate.sensible-information: INFO
+    #org.springframework.transaction: TRACE
+    #org.springframework.transaction.interceptor: TRACE
+  logback:
+    rollingpolicy:
+      clean-history-on-start: true
+server:
+  port : 0
+
+# You may add custom properties used in your code
+# TODO: azure storage access https://learn.microsoft.com/en-us/azure/developer/java/spring-framework/configure-spring-boot-starter-java-app-with-azure-storage
+app:
+  swapi:
+    serverURL: "https://swapi.dev/api"
+    timeout:
+      connectionMillis: 60000
+      readMillis: 60000
+    peopleEndpointPath: "/people"
+  swaggerprefix: /swapi-consumer/doc
+  resttemplate:
+    timeout:
+      millisConnectionTimeout: 60000
+      millisReadTimeout: 60000
+  secret:
+    httpBasicUsers: mercedes:benz,third_party:contractor,valentin:rojo # Format: <username1>:<userpassword1>,<username2>:<userpassword2>,...,<usernameN>:<userpasswordN>
