@@ -3,6 +3,11 @@ kind: Service
 metadata:
   name: mercedes-benz-swapi-consumer
   namespace: mercedes-benz
+  annotations:
+    prometheus.io/path: "/actuator/prometheus"
+    prometheus.io/port: "8080"
+    prometheus.io/scheme: "http"
+    prometheus.io/scrape: "true"
   labels:
     app: mercedes-benz-swapi-consumer
 spec:
