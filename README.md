@@ -16,10 +16,10 @@ Please provide your completed solution as a public GitHub repository.
 • Include error handling and logging.
 
 ## Authors and acknowledgment
-- DevOps Engineer: [valentin.rojo@luceit.com](mailto:valentin.rojo@luceit.com)
+Valentín Rojo Bianchi - DevOps Engineer (vrojobianchi@gmail.com)
 
 ## Support
-- DevOps Engineer: [valentin.rojo@luceit.com](mailto:valentin.rojo@luceit.com)
+Valentín Rojo Bianchi - DevOps Engineer (vrojobianchi@gmail.com)
 
 ## License
 MIT License
