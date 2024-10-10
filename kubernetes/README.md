@@ -34,6 +34,14 @@ Like so:
 ```
 
 ### Monitor auto-scaler results
+
+***
+### Dashboard images
+
+Prometheus Dashboard: kubernetes/Prometheus - Mercedes Benz Stress Test.png
+Kubernetes Dashboard: kubernetes/KD - Mercedes Benz Stress Test.png
+***
+
 A nice way to see if the autoscaler is working is to take a look at the kubernetes-dashboard. Just create an access token and have a look. 
 Of course Prometheus is very useful too. Also you can simply take a look at the namespace's pods, if they rise in number, then flat out to the
 minimum number of pods, you are good to go, it is working.
@@ -65,6 +73,8 @@ horizontalpodautoscaler.autoscaling/mercedes-benz-swapi-consumer   Deployment/me
 
 And if you are monitoring using the **Kubernetes Dashboard** you 
 may see something like what you can see on this image: `kubernetes/KD - Mercedes Benz Stress Test.png`.
+
+You can also take a look at the **Prometheus Dashboard** to see the traffic rising. Nice and clear.
 
 Alas, my cluster has not many resources and it is lacking memory, so several PODs cannot start because the cluster
 lacks memory. Like you can see in the last line of this POD's description: `Warning  FailedScheduling  2m21s  default-scheduler  0/1 nodes are available: 1 Insufficient memory. preemption: 0/1 nodes are available: 1 No preemption victims found for incoming pod..`
